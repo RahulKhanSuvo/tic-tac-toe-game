@@ -1,7 +1,6 @@
 import OImage from "./assets/State=O.png";
 import XImage from "./assets/State=X.png";
 const GameBtn = ({ value, btnOnclick, borderClass }) => {
-  console.log(value);
   return (
     <div>
       <button

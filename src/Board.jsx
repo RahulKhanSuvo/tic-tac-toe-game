@@ -4,7 +4,6 @@ import GameBtn from "./GameBtn";
 const Board = () => {
   const [isNextOBtn, setIsNextOBtn] = useState(true);
   const [gameButtonsV, setGameButtonsV] = useState(Array(9).fill(null));
-  console.log(gameButtonsV);
   // *handelClick
   const handelClick = (index) => {
     const newGameBtnValue = gameButtonsV.slice();
@@ -20,7 +19,6 @@ const Board = () => {
     setIsNextOBtn(!isNextOBtn);
   };
   const winner = calculateWinner(gameButtonsV);
-  console.log(winner);
   let status;
   if (winner) {
     status = `Winner ${winner}`;
@@ -51,6 +49,9 @@ const Board = () => {
       }
     }
     return null;
+  }
+  function newGameClick() {
+    setGameButtonsV(Array(9).fill(null));
   }
   return (
     <div>
@@ -110,6 +111,12 @@ const Board = () => {
           ></GameBtn>
         </div>
       </div>
+      <button
+        onClick={newGameClick}
+        className="w-full bg-white font-bold mt-3 py-3 text-xl rounded-xl"
+      >
+        New Game
+      </button>
     </div>
   );
 };
