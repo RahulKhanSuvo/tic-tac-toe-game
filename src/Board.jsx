@@ -8,21 +8,59 @@ const Board = () => {
   // *handelClick
   const handelClick = (index) => {
     const newGameBtnValue = gameButtonsV.slice();
-    if (newGameBtnValue[index]) {
+    if (newGameBtnValue[index] || calculateWinner(gameButtonsV)) {
       return;
     }
     if (isNextOBtn) {
       newGameBtnValue[index] = "X";
     } else {
-      newGameBtnValue[index] = "0";
+      newGameBtnValue[index] = "O";
     }
-
     setGameButtonsV(newGameBtnValue);
     setIsNextOBtn(!isNextOBtn);
   };
+  const winner = calculateWinner(gameButtonsV);
+  console.log(winner);
+  let status;
+  if (winner) {
+    status = `Winner ${winner}`;
+  } else if (!gameButtonsV.includes(null)) {
+    status = "Draw!";
+  } else {
+    status = `Next play: ${isNextOBtn ? "X" : "O"}`;
+  }
+  // *function for calculateWinner
+  function calculateWinner(gameBtn) {
+    const winingPossibility = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
+    for (const [a, b, c] of winingPossibility) {
+      if (
+        gameBtn[a] &&
+        gameBtn[a] === gameBtn[b] &&
+        gameBtn[a] === gameBtn[c]
+      ) {
+        return gameBtn[a];
+      }
+    }
+    return null;
+  }
   return (
     <div>
-      <div className="artboard bg-gradient-to-b from-blue-400 to-blue-600 phone-2 border rounded-xl flex justify-center items-center">
+      <div className="">
+        <div
+          style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
+          className="text-center text-white mb-5 font-bold text-2xl"
+        >
+          {status}
+        </div>
         <div className="grid grid-cols-3 gap-2 bg-white p-4 rounded-lg shadow-md">
           <GameBtn
             value={gameButtonsV[0]}
