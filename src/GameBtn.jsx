@@ -1,10 +1,11 @@
-const GameBtn = ({ borderClass }) => {
+const GameBtn = ({ value, btnOnclick, borderClass }) => {
   return (
     <div>
       <button
-        className={`h-20 w-20 text-2xl flex items-center justify-center border-gray-400 ${borderClass}`}
+        onClick={btnOnclick}
+        className={`h-20 w-20 bg text-2xl flex items-center justify-center border-gray-400 ${borderClass}`}
       >
-        X
+        {value}
       </button>
     </div>
   );
