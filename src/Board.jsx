@@ -1,5 +1,6 @@
 import { useState } from "react";
 import GameBtn from "./GameBtn";
+import Score from "./Score";
 
 const Board = () => {
   const [isNextOBtn, setIsNextOBtn] = useState(true);
@@ -56,6 +57,7 @@ const Board = () => {
   return (
     <div>
       <div className="">
+        <Score></Score>
         <div
           style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
           className="text-center text-white mb-5 font-bold text-2xl"
