@@ -3,6 +3,9 @@ import GameBtn from "./GameBtn";
 import Score from "./Score";
 
 const Board = () => {
+  const [xWin, setXWin] = useState(0);
+  const [oWin, setOWin] = useState(0);
+  const [drawCount, setDrawCount] = useState(0);
   const [isNextOBtn, setIsNextOBtn] = useState(true);
   const [gameButtonsV, setGameButtonsV] = useState(Array(9).fill(null));
   // *handelClick
@@ -11,14 +14,22 @@ const Board = () => {
     if (newGameBtnValue[index] || calculateWinner(gameButtonsV)) {
       return;
     }
-    if (isNextOBtn) {
-      newGameBtnValue[index] = "X";
-    } else {
-      newGameBtnValue[index] = "O";
-    }
+    newGameBtnValue[index] = isNextOBtn ? "X" : "O";
     setGameButtonsV(newGameBtnValue);
     setIsNextOBtn(!isNextOBtn);
+
+    const winner = calculateWinner(newGameBtnValue);
+    if (winner) {
+      if (winner === "X") {
+        setXWin(xWin + 1);
+      } else {
+        setOWin(oWin + 1);
+      }
+    } else if (!newGameBtnValue.includes(null)) {
+      setDrawCount(drawCount + 1);
+    }
   };
+
   const winner = calculateWinner(gameButtonsV);
   let status;
   if (winner) {
@@ -28,6 +39,7 @@ const Board = () => {
   } else {
     status = `Next play: ${isNextOBtn ? "X" : "O"}`;
   }
+
   // *function for calculateWinner
   function calculateWinner(gameBtn) {
     const winingPossibility = [
@@ -57,7 +69,7 @@ const Board = () => {
   return (
     <div>
       <div className="">
-        <Score></Score>
+        <Score drawCount={drawCount} xWin={xWin} oWin={oWin}></Score>
         <div
           style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
           className="text-center text-white mb-5 font-bold text-2xl"
