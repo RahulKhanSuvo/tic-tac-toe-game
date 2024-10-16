@@ -127,7 +127,7 @@ const Board = () => {
       </div>
       <button
         onClick={newGameClick}
-        className="w-full bg-white font-bold mt-3 py-3 text-xl rounded-xl"
+        className="w-full bg-white font-bold mt-3 py-3 text-xl rounded-xl hover:bg-blue-500 hover:text-white hover:scale-105 hover:shadow-xl hover:ring-2 hover:ring-blue-300 transition-all duration-300 ease-out"
       >
         New Game
       </button>
