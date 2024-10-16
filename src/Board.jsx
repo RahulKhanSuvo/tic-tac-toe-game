@@ -37,7 +37,7 @@ const Board = () => {
   } else if (!gameButtonsV.includes(null)) {
     status = "Draw!";
   } else {
-    status = `Next play: ${isNextOBtn ? "X" : "O"}`;
+    status = `Player ${isNextOBtn ? "X" : "O"} Turn`;
   }
 
   // *function for calculateWinner
