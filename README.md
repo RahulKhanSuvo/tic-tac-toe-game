@@ -16,6 +16,18 @@ A simple and fun Tic-Tac-Toe game built using **React** and **Tailwind CSS**. Th
 - **Tailwind CSS**: For styling the game.
 - **JavaScript (ES6)**: For handling the game logic and state management.
 
-## live Demon
-Check out the live version of the project: [Tic-Tac-Toe](https://tic-tac-toe-rahul-khan-suvo.netlify.app/)
+## Getting Started
 
+Follow these instructions to set up and run the project locally.
+
+### Prerequisites
+
+- Node.js (v12 or higher)
+- npm (v6 or higher) or yarn (v1.22 or higher)
+
+### Installation
+
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/RahulKhanSuvo/tic-tac-toe-game.git
+   cd tic-tac-toe
